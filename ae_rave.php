@@ -308,7 +308,7 @@ function verifyTransaction($payment_return, $data, $api)
             'payment' => 'rave',
             'payment_status' => 'complete'
         );
-		update_post_meta($order_id, 'paystack_status','COMPLETE');
+		update_post_meta($order_id, 'rave_status','COMPLETE');
     }
     elseif (($api->chargecode == "00" || $api->chargecode == "0") && ($api->amount < $amount)) {
     	$payment_return = array(
