@@ -150,9 +150,9 @@ function ae_rave_setup_payment($response, $paymentType, $order) {
         $rave = ae_get_option('rave');
 		$mode = $rave['mode'];
  		if ($mode == 'test') {
-			$rave_payment_url = 'https://rave-api-v2.herokuapp.com';
+			$baseUrl = 'https://rave-api-v2.herokuapp.com';
 		}else{
-			$rave_payment_url = 'https://api.ravepay.co';
+			$baseUrl = 'https://api.ravepay.co';
 		}
 
         $order_pay = $order->generate_data_to_pay();
