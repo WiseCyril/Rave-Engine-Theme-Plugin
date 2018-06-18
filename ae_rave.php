@@ -88,7 +88,8 @@ function ae_rave_add_settings($pages){
 			            'options' => array(
 			                'NG' => 'Nigeria',
 			                'GH' => 'Ghana',
-			                'KE' => 'Kenya'
+							'KE' => 'Kenya',
+							'ZA' => 'South Africa'
 			            ),
 						'name'  => 'country',
 						'class' => ''
@@ -150,7 +151,7 @@ function ae_rave_setup_payment($response, $paymentType, $order) {
         $rave = ae_get_option('rave');
 		$mode = $rave['mode'];
  		if ($mode == 'test') {
-			$baseUrl = 'https://rave-api-v2.herokuapp.com';
+			$baseUrl = 'https://ravesandboxapi.flutterwave.com';
 		}else{
 			$baseUrl = 'https://api.ravepay.co';
 		}
@@ -235,7 +236,7 @@ function requery($payment_return, $data)
 	$mode = $rave['mode'];
 					
 	if ($mode == 'test') {
-		$apiLink = "http://flw-pms-dev.eu-west-1.elasticbeanstalk.com/";
+		$apiLink = "https://ravesandboxapi.flutterwave.com/";
 	}else{
 		$apiLink = "https://api.ravepay.co/";
 	}
@@ -254,7 +255,7 @@ function requery($payment_return, $data)
 	);
 
 	// Make request to endpoint
-	$response = wp_remote_post($apiLink . 'flwv3-pug/getpaidx/api/xrequery', $args );
+	$response = wp_remote_post($apiLink . 'flwv3-pug/getpaidx/api/v2/verify', $args );
 
 	$resp = json_decode(wp_remote_retrieve_body($response));
 
